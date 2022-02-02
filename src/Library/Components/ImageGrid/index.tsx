@@ -5,10 +5,9 @@ import classes from "./styles.module.css";
 interface Props {
   children: JSX.Element | JSX.Element[];
   className?: string;
-  style?: object;
 }
 
-const ImageGrid = ({ children, className = "", style = {} }: Props) => {
+const ImageGrid = ({ children, className = "" }: Props) => {
   const numberOfImages = Array.isArray(children) ? children.length : 1;
 
   return (
@@ -18,7 +17,6 @@ const ImageGrid = ({ children, className = "", style = {} }: Props) => {
         classes[`grid_wrapper_${numberOfImages}_img`],
         className
       )}
-      style={style}
     >
       {React.Children.map(children, (child, i) =>
         React.cloneElement(child as ReactElement, {
