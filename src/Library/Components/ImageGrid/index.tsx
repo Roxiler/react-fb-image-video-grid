@@ -23,7 +23,7 @@ const ImageGrid = ({ children, className = "" }: Props) => {
           ...child.props,
           className: ` ${classes.img} ${
             classes[`img_${numberOfImages}_${i + 1}`]
-          } ${child.props.className || ""}`,
+          } ${child.props?.className || ""}`,
         })
       )}
     </div>
