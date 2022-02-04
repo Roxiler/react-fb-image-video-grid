@@ -18,14 +18,15 @@ const ImageGrid = ({ children, className = "" }: Props) => {
         className
       )}
     >
-      {React.Children.map(children, (child, i) =>
-        React.cloneElement(child as ReactElement, {
+      {React.Children.map(children, (child, i) => {
+        const imgCount = i + 1;
+        return React.cloneElement(child as ReactElement, {
           ...child.props,
           className: ` ${classes.img} ${
-            classes[`img_${numberOfImages}_${i + 1}`]
+            classes[`img_${numberOfImages}_${imgCount}`]
           } ${child.props?.className || ""}`,
-        })
-      )}
+        });
+      })}
     </div>
   );
 };
