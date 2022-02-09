@@ -3,11 +3,13 @@ import { ImageGrid } from "./Library";
 
 function App() {
   return (
-    <div>
+    <div
+      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+    >
       <div style={{ marginBottom: "2rem" }}>
         <h1>1 image</h1>
         <div
-          style={{ width: "100vw", height: "30rem", border: "3px solid red" }}
+          style={{ width: "60vw", height: "30rem", border: "3px solid red" }}
         >
           <ImageGrid>
             <img
@@ -20,7 +22,7 @@ function App() {
       <div style={{ marginBottom: "2rem" }}>
         <h1>2 images</h1>
         <div
-          style={{ width: "100vw", height: "30rem", border: "3px solid red" }}
+          style={{ width: "60vw", height: "30rem", border: "3px solid red" }}
         >
           <ImageGrid>
             <img
@@ -38,7 +40,7 @@ function App() {
       <div style={{ marginBottom: "2rem" }}>
         <h1>3 images</h1>
         <div
-          style={{ width: "100vw", height: "30rem", border: "3px solid red" }}
+          style={{ width: "60vw", height: "30rem", border: "3px solid red" }}
         >
           <ImageGrid>
             <img
@@ -60,7 +62,7 @@ function App() {
       <div style={{ marginBottom: "2rem" }}>
         <h1>4 images</h1>
         <div
-          style={{ width: "100vw", height: "30rem", border: "3px solid red" }}
+          style={{ width: "60vw", height: "30rem", border: "3px solid red" }}
         >
           <ImageGrid>
             <img
@@ -86,7 +88,7 @@ function App() {
       <div style={{ marginBottom: "2rem" }}>
         <h1>5 images</h1>
         <div
-          style={{ width: "100vw", height: "30rem", border: "3px solid red" }}
+          style={{ width: "60vw", height: "30rem", border: "3px solid red" }}
         >
           <ImageGrid>
             <img
