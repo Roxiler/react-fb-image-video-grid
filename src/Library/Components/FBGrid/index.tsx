@@ -10,18 +10,6 @@ interface Props {
 const ImageGrid = ({ children, className = "" }: Props) => {
   const numberOfImages = Array.isArray(children) ? children.length : 1;
 
-  const imageRefs = React.useRef<HTMLImageElement[]>([]);
-
-  const [imageSrcs, setImgSrcs] = React.useState<string[]>([]);
-
-  React.useEffect(() => {
-    imageRefs.current.forEach((img) => {
-      setImgSrcs((prevState) => [...prevState, img.src]);
-    });
-  }, []);
-
-  console.log(imageSrcs);
-
   if (numberOfImages < 5) {
     return (
       <div
@@ -35,9 +23,6 @@ const ImageGrid = ({ children, className = "" }: Props) => {
           const imgCount = i + 1;
           return React.cloneElement(child as ReactElement, {
             ...child.props,
-            ref: (el: HTMLImageElement) => {
-              imageRefs.current = [...imageRefs.current, el];
-            },
             className: ` ${classes.img} ${
               classes[`img_${numberOfImages}_${imgCount}`]
             } ${child.props?.className || ""}`,
@@ -63,9 +48,6 @@ const ImageGrid = ({ children, className = "" }: Props) => {
             const imgCount = i + 1;
             return React.cloneElement(child as ReactElement, {
               ...child.props,
-              ref: (el: HTMLImageElement) => {
-                imageRefs.current = [...imageRefs.current, el];
-              },
               className: ` ${classes.img} ${
                 classes[`img_${firstRowImgCount}_${imgCount}`]
               } ${child.props?.className || ""}`,
@@ -82,9 +64,6 @@ const ImageGrid = ({ children, className = "" }: Props) => {
             const imgCount = i + 1;
             return React.cloneElement(child as ReactElement, {
               ...child.props,
-              ref: (el: HTMLImageElement) => {
-                imageRefs.current = [...imageRefs.current, el];
-              },
               className: ` ${classes.img} ${
                 classes[`sub_img_${secondRowImgCount}_${imgCount}`]
               } ${child.props?.className || ""}`,
