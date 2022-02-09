@@ -36,8 +36,6 @@ const ImageGrid = ({ children, className = "" }: Props) => {
     const secondRow = (children as JSX.Element[]).filter((_, i) => i >= 2);
     const secondRowImgCount = secondRow.length;
 
-    console.log({ firstRow, firstRowImgCount, secondRow, secondRowImgCount });
-
     return (
       <div className={clsx(classes.sub_grid_wrapper, className)}>
         <div
@@ -59,7 +57,7 @@ const ImageGrid = ({ children, className = "" }: Props) => {
         <div
           className={clsx(
             classes.sub_grid_wrapper_row,
-            classes[`sub_grid_wrapper_${secondRow.length + 1}_img`]
+            classes[`sub_grid_wrapper_${secondRow.length}_img`]
           )}
         >
           {React.Children.map(secondRow, (child, i) => {
