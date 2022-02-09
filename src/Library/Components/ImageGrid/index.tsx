@@ -40,7 +40,7 @@ const ImageGrid = ({ children, className = "" }: Props) => {
       <div className={clsx(classes.sub_grid_wrapper, className)}>
         <div
           className={clsx(
-            classes.sub_grid_wrapper_row,
+            classes.sub_grid_wrapper_first_row,
             classes[`grid_wrapper_${firstRow.length}_img`]
           )}
         >
@@ -56,7 +56,7 @@ const ImageGrid = ({ children, className = "" }: Props) => {
         </div>
         <div
           className={clsx(
-            classes.sub_grid_wrapper_row,
+            classes.sub_grid_wrapper_second_row,
             classes[`sub_grid_wrapper_${secondRow.length}_img`]
           )}
         >

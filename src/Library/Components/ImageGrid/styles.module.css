@@ -5,11 +5,18 @@
   height: 100%;
 }
 
-.sub_grid_wrapper_row {
+.sub_grid_wrapper_first_row {
   display: grid;
   grid-auto-flow: row;
   width: 100%;
-  height: 50%;
+  height: 66.66%;
+  gap: 0.25rem;
+}
+.sub_grid_wrapper_second_row {
+  display: grid;
+  grid-auto-flow: row;
+  width: 100%;
+  height: 33.33%;
   gap: 0.25rem;
 }
 
