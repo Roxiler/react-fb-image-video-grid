@@ -26,8 +26,6 @@ const Carausel = ({
     );
 
     document.addEventListener("keydown", (key) => {
-      console.log(key);
-
       if (key.key === "ArrowRight") {
         handleNext();
       } else if (key.key === "ArrowLeft") {
@@ -37,8 +35,6 @@ const Carausel = ({
 
     return () => {
       document.removeEventListener("keydown", (key) => {
-        console.log(key);
-
         if (key.key === "ArrowRight") {
           handleNext();
         } else if (key.key === "ArrowLeft") {
