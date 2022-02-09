@@ -24,10 +24,42 @@ const Carausel = ({
     setCurrentImageIndex(
       () => images.findIndex((_, i) => i === initialImageIndex) as number
     );
+
+    document.addEventListener("keydown", (key) => {
+      console.log(key);
+
+      if (key.key === "ArrowRight") {
+        handleNext();
+      } else if (key.key === "ArrowLeft") {
+        handlePrevious();
+      }
+    });
+
+    return () => {
+      document.removeEventListener("keydown", (key) => {
+        console.log(key);
+
+        if (key.key === "ArrowRight") {
+          handleNext();
+        } else if (key.key === "ArrowLeft") {
+          handlePrevious();
+        }
+      });
+    };
     //eslint-disable-next-line
   }, [initialImageIndex]);
 
   const currentImage = images[currentImageIndex];
+
+  const handleNext = () =>
+    setCurrentImageIndex((prevImageIndex) =>
+      prevImageIndex === images.length - 1 ? 0 : prevImageIndex + 1
+    );
+
+  const handlePrevious = () =>
+    setCurrentImageIndex((prevImgIndex) =>
+      prevImgIndex === 0 ? images.length - 1 : prevImgIndex - 1
+    );
 
   return (
     <Modal
@@ -37,31 +69,11 @@ const Carausel = ({
       contentLabel="Example Modal"
     >
       <div className={classes.modal_wrap}>
-        <span
-          onClick={() =>
-            setCurrentImageIndex(
-              currentImageIndex === 0
-                ? images.length - 1
-                : currentImageIndex - 1
-            )
-          }
-        >
-          P
-        </span>
+        <span onClick={handlePrevious}>P</span>
         {React.cloneElement(currentImage, {
           className: clsx(classes.img, currentImage.props.className || ""),
         })}
-        <span
-          onClick={() =>
-            setCurrentImageIndex(
-              currentImageIndex === images.length - 1
-                ? 0
-                : currentImageIndex + 1
-            )
-          }
-        >
-          N
-        </span>
+        <span onClick={handleNext}>N</span>
       </div>
     </Modal>
   );
