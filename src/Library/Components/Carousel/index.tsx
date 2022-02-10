@@ -17,14 +17,25 @@ const Carausel = ({
   onClose,
 }: CarauselType) => {
   const [currentImageIndex, setCurrentImageIndex] = React.useState(
-    () => images.findIndex((_, i) => i === initialImageIndex) as number
+    initialImageIndex
+  );
+
+  const memoizedImages = React.useMemo(() => images, [images]);
+  const handleNext = React.useCallback(() => {
+    setCurrentImageIndex((prevImageIndex) =>
+      prevImageIndex === memoizedImages.length - 1 ? 0 : prevImageIndex + 1
+    );
+  }, [memoizedImages]);
+
+  const handlePrevious = React.useCallback(
+    () =>
+      setCurrentImageIndex((prevImgIndex) =>
+        prevImgIndex === 0 ? memoizedImages.length - 1 : prevImgIndex - 1
+      ),
+    [memoizedImages]
   );
 
   React.useEffect(() => {
-    setCurrentImageIndex(
-      () => images.findIndex((_, i) => i === initialImageIndex) as number
-    );
-
     document.addEventListener("keydown", (key) => {
       if (key.key === "ArrowRight") {
         handleNext();
@@ -42,20 +53,9 @@ const Carausel = ({
         }
       });
     };
-    //eslint-disable-next-line
-  }, [initialImageIndex]);
+  }, [handleNext, handlePrevious]);
 
   const currentImage = images[currentImageIndex];
-
-  const handleNext = () =>
-    setCurrentImageIndex((prevImageIndex) =>
-      prevImageIndex === images.length - 1 ? 0 : prevImageIndex + 1
-    );
-
-  const handlePrevious = () =>
-    setCurrentImageIndex((prevImgIndex) =>
-      prevImgIndex === 0 ? images.length - 1 : prevImgIndex - 1
-    );
 
   return (
     <Modal
