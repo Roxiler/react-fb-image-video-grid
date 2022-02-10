@@ -10,3 +10,15 @@
   height: 100%;
   width: 100%;
 }
+
+.noselect{
+  user-select: none;
+}
+
+.leftarrow{
+  padding-right: 0.5em;
+}
+
+.rightarrow{
+  padding-left: 0.5em;
+}

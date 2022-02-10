@@ -65,11 +65,11 @@ const Carausel = ({
       contentLabel="Example Modal"
     >
       <div className={classes.modal_wrap}>
-        <span onClick={handlePrevious}>P</span>
+        <span onClick={handlePrevious}><span className={[classes.noselect, classes.leftarrow].join(' ')}>&#60;</span></span>
         {React.cloneElement(currentImage, {
           className: clsx(classes.img, currentImage.props.className || ""),
         })}
-        <span onClick={handleNext}>N</span>
+        <span onClick={handleNext}><span className={[classes.noselect, classes.rightarrow].join(' ')}>&#62;</span></span>
       </div>
     </Modal>
   );
