@@ -28,7 +28,7 @@ const ImageGrid = ({ children, className = "" }: Props) => {
     return (
       <>
         <Carausel
-          key={selectedImageIndex}
+          key={String(isOpenCarausel)}
           isOpen={isOpenCarausel}
           images={
             numberOfImages === 1
@@ -73,7 +73,7 @@ const ImageGrid = ({ children, className = "" }: Props) => {
     return (
       <>
         <Carausel
-          key={selectedImageIndex}
+          key={String(isOpenCarausel)}
           isOpen={isOpenCarausel}
           initialImageIndex={selectedImageIndex}
           images={
