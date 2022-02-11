@@ -2,6 +2,7 @@ import React from "react";
 import Modal from "react-modal";
 import { clsx } from "../../Utilis/clsx";
 import classes from "./styles.module.css";
+import { AiOutlineClose, AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 
 type CarauselType = {
   images: JSX.Element[];
@@ -64,12 +65,24 @@ const Carausel = ({
       onRequestClose={onClose}
       contentLabel="Example Modal"
     >
-      <div className={classes.modal_wrap}>
-        <span onClick={handlePrevious}>P</span>
-        {React.cloneElement(currentImage, {
-          className: clsx(classes.img, currentImage.props.className || ""),
-        })}
-        <span onClick={handleNext}>N</span>
+      <div className={classes.layout}>
+        <AiOutlineClose
+          onClick={onClose}
+          className={clsx(classes.close_icon, classes.icon)}
+        />
+        <div className={classes.modal_wrap}>
+          <AiOutlineLeft
+            className={clsx(classes.icon)}
+            onClick={handlePrevious}
+          />
+          {React.cloneElement(currentImage, {
+            className: clsx(classes.img, currentImage.props.className || ""),
+          })}
+          <AiOutlineRight
+            className={clsx(classes.icon)}
+            onClick={handleNext}
+          />
+        </div>
       </div>
     </Modal>
   );

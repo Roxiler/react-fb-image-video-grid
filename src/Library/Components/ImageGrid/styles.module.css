@@ -50,6 +50,13 @@
   cursor: pointer;
 }
 
+.show_more_img {
+  display: grid;
+  place-items: center;
+  background-color: rgb(70, 68, 68);
+  color: white;
+}
+
 .img_1_1 {
   grid-column: 1;
   grid-row: 1;

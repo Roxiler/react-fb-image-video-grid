@@ -19,7 +19,10 @@ const ImageGrid = ({ children, className = "" }: Props) => {
     return imageIndex;
   };
 
-  const handleCloseCarausel = () => setIsOpenCarausel(false);
+  const handleCloseCarausel = () => {
+    setSelectedImageIndex(0);
+    setIsOpenCarausel(false);
+  };
 
   if (numberOfImages < 5) {
     return (
@@ -62,7 +65,9 @@ const ImageGrid = ({ children, className = "" }: Props) => {
   } else {
     const firstRow = (children as JSX.Element[]).filter((_, i) => i < 2);
     const firstRowImgCount = firstRow.length;
-    const secondRow = (children as JSX.Element[]).filter((_, i) => i >= 2);
+    const secondRow = (children as JSX.Element[]).filter(
+      (_, i) => i >= 2 && i <= 4
+    );
     const secondRowImgCount = secondRow.length;
 
     return (
@@ -108,6 +113,23 @@ const ImageGrid = ({ children, className = "" }: Props) => {
           >
             {React.Children.map(secondRow, (child, i) => {
               const imgCount = i + 1;
+
+              if (numberOfImages > 5 && imgCount === 3) {
+                return (
+                  <div
+                    className={clsx(
+                      classes.img,
+                      classes[`sub_img_${secondRowImgCount}_${imgCount}`],
+                      child.props?.className || "",
+                      classes.show_more_img
+                    )}
+                    onClick={() => setSelectedImageIndex(handleImageClick(0))}
+                  >
+                    + {numberOfImages - 4}
+                  </div>
+                );
+              }
+
               return React.cloneElement(child as ReactElement, {
                 ...child.props,
                 className: ` ${classes.img} ${
