@@ -28,3 +28,7 @@
   cursor: pointer;
   font-size: 1.5rem;
 }
+
+.left_arrow {
+  transform: rotate(180deg);
+}

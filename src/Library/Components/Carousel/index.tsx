@@ -2,7 +2,8 @@ import React from "react";
 import Modal from "react-modal";
 import { clsx } from "../../Utilis/clsx";
 import classes from "./styles.module.css";
-import { AiOutlineClose, AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
+import closeIcon from "../../Svgs/icons8-close.svg";
+import right_chevron from "../../Svgs/right_arrow.svg";
 
 type CarauselType = {
   images: JSX.Element[];
@@ -66,19 +67,25 @@ const Carausel = ({
       contentLabel="Example Modal"
     >
       <div className={classes.layout}>
-        <AiOutlineClose
+        <img
+          alt="close-icon"
+          src={closeIcon}
           onClick={onClose}
           className={clsx(classes.close_icon, classes.icon)}
         />
         <div className={classes.modal_wrap}>
-          <AiOutlineLeft
-            className={clsx(classes.icon)}
+          <img
+            src={right_chevron}
+            alt="left-arrow"
+            className={clsx(classes.icon, classes.left_arrow)}
             onClick={handlePrevious}
           />
           {React.cloneElement(currentImage, {
             className: clsx(classes.img, currentImage.props.className || ""),
           })}
-          <AiOutlineRight
+          <img
+            src={right_chevron}
+            alt="right-arrow"
             className={clsx(classes.icon)}
             onClick={handleNext}
           />
