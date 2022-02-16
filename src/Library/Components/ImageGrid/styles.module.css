@@ -51,9 +51,19 @@
 }
 
 .show_more_img {
-  display: grid;
-  place-items: center;
-  background-color: rgb(70, 68, 68);
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  opacity: 0.5;
+  position: relative;
+}
+
+.show_more_text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
   color: white;
 }
 

@@ -125,7 +125,20 @@ const ImageGrid = ({ children, className = "" }: Props) => {
                     )}
                     onClick={() => setSelectedImageIndex(handleImageClick(0))}
                   >
-                    + {numberOfImages - 4}
+                    {React.cloneElement(child as ReactElement, {
+                      ...child.props,
+                      className: ` ${classes.img} ${
+                        classes[`sub_img_${secondRowImgCount}_${imgCount}`]
+                      } ${child.props?.className || ""}`,
+                      onClick: () => {
+                        child.props.onClick?.();
+                        setSelectedImageIndex(handleImageClick(i + 2));
+                      },
+                    })}
+                    <div className={classes.show_more_text}>
+                      {" "}
+                      + {numberOfImages - 4}{" "}
+                    </div>
                   </div>
                 );
               }
