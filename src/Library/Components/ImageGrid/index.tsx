@@ -137,7 +137,7 @@ const ImageGrid = ({ children, className = "" }: Props) => {
                     })}
                     <div className={classes.show_more_text}>
                       {" "}
-                      + {numberOfImages - 4}{" "}
+                      + {numberOfImages - 5}{" "}
                     </div>
                   </div>
                 );
