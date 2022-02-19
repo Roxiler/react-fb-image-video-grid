@@ -1,14 +1,15 @@
-import React, { ReactElement } from "react";
-import { clsx } from "../../Utilis/clsx";
-import Carausel from "../Carousel";
-import classes from "./styles.module.css";
+import React, { ReactElement } from 'react';
+import { clsx } from '../../Utilis/clsx';
+import Carausel from '../Carousel';
+import './styles.css';
 
 interface Props {
   children: JSX.Element | JSX.Element[];
   className?: string;
+  showModal?: boolean;
 }
 
-const ImageGrid = ({ children, className = "" }: Props) => {
+const ImageGrid = ({ children, showModal = true, className = '' }: Props) => {
   const numberOfImages = Array.isArray(children) ? children.length : 1;
 
   const [selectedImageIndex, setSelectedImageIndex] = React.useState<number>(0);
@@ -27,22 +28,24 @@ const ImageGrid = ({ children, className = "" }: Props) => {
   if (numberOfImages < 5) {
     return (
       <>
-        <Carausel
-          key={String(isOpenCarausel)}
-          isOpen={isOpenCarausel}
-          images={
-            numberOfImages === 1
-              ? [children as JSX.Element]
-              : (children as JSX.Element[])
-          }
-          initialImageIndex={selectedImageIndex}
-          onClose={handleCloseCarausel}
-        />
+        {typeof showModal === 'boolean' && showModal && (
+          <Carausel
+            key={String(isOpenCarausel)}
+            isOpen={isOpenCarausel}
+            images={
+              numberOfImages === 1
+                ? [children as JSX.Element]
+                : (children as JSX.Element[])
+            }
+            initialImageIndex={selectedImageIndex}
+            onClose={handleCloseCarausel}
+          />
+        )}
 
         <div
           className={clsx(
-            classes.grid_wrapper,
-            classes[`grid_wrapper_${numberOfImages}_img`],
+            'grid_wrapper',
+            `grid_wrapper_${numberOfImages}_img`,
             className
           )}
         >
@@ -50,9 +53,9 @@ const ImageGrid = ({ children, className = "" }: Props) => {
             const imgCount = i + 1;
             return React.cloneElement(child as ReactElement, {
               ...child.props,
-              className: ` ${classes.img} ${
-                classes[`img_${numberOfImages}_${imgCount}`]
-              } ${child.props?.className || ""}`,
+              className: ` ${'img'} ${`img_${numberOfImages}_${imgCount}`} ${
+                child.props?.className || ''
+              }`,
               onClick: () => {
                 child.props.onClick?.();
                 setSelectedImageIndex(handleImageClick(i));
@@ -72,32 +75,34 @@ const ImageGrid = ({ children, className = "" }: Props) => {
 
     return (
       <>
-        <Carausel
-          key={String(isOpenCarausel)}
-          isOpen={isOpenCarausel}
-          initialImageIndex={selectedImageIndex}
-          images={
-            numberOfImages === 1
-              ? [children as JSX.Element]
-              : (children as JSX.Element[])
-          }
-          onClose={handleCloseCarausel}
-        />
+        {typeof showModal === 'boolean' && showModal && (
+          <Carausel
+            key={String(isOpenCarausel)}
+            isOpen={isOpenCarausel}
+            initialImageIndex={selectedImageIndex}
+            images={
+              numberOfImages === 1
+                ? [children as JSX.Element]
+                : (children as JSX.Element[])
+            }
+            onClose={handleCloseCarausel}
+          />
+        )}
 
-        <div className={clsx(classes.sub_grid_wrapper, className)}>
+        <div className={clsx('sub_grid_wrapper', className)}>
           <div
             className={clsx(
-              classes.sub_grid_wrapper_first_row,
-              classes[`grid_wrapper_${firstRow.length}_img`]
+              'sub_grid_wrapper_first_row',
+              `grid_wrapper_${firstRow.length}_img`
             )}
           >
             {React.Children.map(firstRow, (child, i) => {
               const imgCount = i + 1;
               return React.cloneElement(child as ReactElement, {
                 ...child.props,
-                className: ` ${classes.img} ${
-                  classes[`img_${firstRowImgCount}_${imgCount}`]
-                } ${child.props?.className || ""}`,
+                className: ` ${'img'} ${`img_${firstRowImgCount}_${imgCount}`} ${
+                  child.props?.className || ''
+                }`,
                 onClick: () => {
                   child.props.onClick?.();
                   setSelectedImageIndex(handleImageClick(i));
@@ -107,8 +112,8 @@ const ImageGrid = ({ children, className = "" }: Props) => {
           </div>
           <div
             className={clsx(
-              classes.sub_grid_wrapper_second_row,
-              classes[`sub_grid_wrapper_${secondRow.length}_img`]
+              'sub_grid_wrapper_second_row',
+              `sub_grid_wrapper_${secondRow.length}_img`
             )}
           >
             {React.Children.map(secondRow, (child, i) => {
@@ -118,26 +123,26 @@ const ImageGrid = ({ children, className = "" }: Props) => {
                 return (
                   <div
                     className={clsx(
-                      classes.img,
-                      classes[`sub_img_${secondRowImgCount}_${imgCount}`],
-                      child.props?.className || "",
-                      classes.show_more_img
+                      'img',
+                      `sub_img_${secondRowImgCount}_${imgCount}`,
+                      child.props?.className || '',
+                      'show_more_img'
                     )}
                     onClick={() => setSelectedImageIndex(handleImageClick(0))}
                   >
                     {React.cloneElement(child as ReactElement, {
                       ...child.props,
-                      className: ` ${classes.img} ${
-                        classes[`sub_img_${secondRowImgCount}_${imgCount}`]
-                      } ${child.props?.className || ""}`,
+                      className: ` ${'img'} ${`sub_img_${secondRowImgCount}_${imgCount}`} ${
+                        child.props?.className || ''
+                      }`,
                       onClick: () => {
                         child.props.onClick?.();
                         setSelectedImageIndex(handleImageClick(i + 2));
                       },
                     })}
-                    <div className={classes.show_more_text}>
-                      {" "}
-                      + {numberOfImages - 5}{" "}
+                    <div className={'show_more_text'}>
+                      {' '}
+                      + {numberOfImages - 5}{' '}
                     </div>
                   </div>
                 );
@@ -145,9 +150,9 @@ const ImageGrid = ({ children, className = "" }: Props) => {
 
               return React.cloneElement(child as ReactElement, {
                 ...child.props,
-                className: ` ${classes.img} ${
-                  classes[`sub_img_${secondRowImgCount}_${imgCount}`]
-                } ${child.props?.className || ""}`,
+                className: ` ${'img'} ${`sub_img_${secondRowImgCount}_${imgCount}`} ${
+                  child.props?.className || ''
+                }`,
                 onClick: () => {
                   child.props.onClick?.();
                   setSelectedImageIndex(handleImageClick(i + 2));

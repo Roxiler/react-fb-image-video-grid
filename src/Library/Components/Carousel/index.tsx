@@ -1,9 +1,7 @@
 import React from "react";
 import Modal from "react-modal";
 import { clsx } from "../../Utilis/clsx";
-import classes from "./styles.module.css";
-import closeIcon from "../../Svgs/icons8-close.svg";
-import right_chevron from "../../Svgs/right_arrow.svg";
+import "./styles.css";
 
 type CarauselType = {
   images: JSX.Element[];
@@ -66,29 +64,41 @@ const Carausel = ({
       onRequestClose={onClose}
       contentLabel="Example Modal"
     >
-      <div className={classes.layout}>
-        <img
-          alt="close-icon"
-          src={closeIcon}
+      <div className={"layout"}>
+        <svg
           onClick={onClose}
-          className={clsx(classes.close_icon, classes.icon)}
-        />
-        <div className={classes.modal_wrap}>
-          <img
-            src={right_chevron}
-            alt="left-arrow"
-            className={clsx(classes.icon, classes.left_arrow)}
+          className={clsx("close_icon", "icon")}
+          fill="#000000"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          width="24px"
+          height="24px"
+        >
+          <path d="M 4.7070312 3.2929688 L 3.2929688 4.7070312 L 10.585938 12 L 3.2929688 19.292969 L 4.7070312 20.707031 L 12 13.414062 L 19.292969 20.707031 L 20.707031 19.292969 L 13.414062 12 L 20.707031 4.7070312 L 19.292969 3.2929688 L 12 10.585938 L 4.7070312 3.2929688 z" />
+        </svg>
+        <div className={"modal_wrap"}>
+          <svg
+            className={clsx("icon", "left_arrow")}
             onClick={handlePrevious}
-          />
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+          >
+            <path d="M7.293 4.707 14.586 12l-7.293 7.293 1.414 1.414L17.414 12 8.707 3.293 7.293 4.707z" />
+          </svg>
           {React.cloneElement(currentImage, {
-            className: clsx(classes.img, currentImage.props.className || ""),
+            className: clsx("img", currentImage.props.className || ""),
           })}
-          <img
-            src={right_chevron}
-            alt="right-arrow"
-            className={clsx(classes.icon)}
+
+          <svg
+            className={clsx("icon")}
             onClick={handleNext}
-          />
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+          >
+            <path d="M7.293 4.707 14.586 12l-7.293 7.293 1.414 1.414L17.414 12 8.707 3.293 7.293 4.707z" />
+          </svg>
         </div>
       </div>
     </Modal>
