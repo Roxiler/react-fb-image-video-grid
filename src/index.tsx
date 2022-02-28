@@ -1,3 +1,3 @@
-import { ImageGrid } from './Librar';
+import { ImageGrid } from './Library';
 
 export { ImageGrid };

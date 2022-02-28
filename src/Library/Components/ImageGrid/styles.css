@@ -4,20 +4,26 @@
 }
 
 .sub_grid_wrapper_first_row {
+  display: grid;
+  grid-auto-flow: row;
   width: 100%;
-  height: 66.25%;
-  padding-bottom: 0.25%;
+  height: 66.66%;
+  gap: 0.25rem;
 }
 .sub_grid_wrapper_second_row {
-  padding-top: 0.25%;
+  display: grid;
+  grid-auto-flow: row;
   width: 100%;
-  height: 33.25%;
-  display: flex;
+  height: 33.33%;
+  gap: 0.25rem;
 }
 
 .grid_wrapper {
+  display: grid;
+  grid-auto-flow: row;
   width: 100%;
   height: 100%;
+  gap: 0.25rem;
 }
 
 .grid_wrapper_1_img {
@@ -45,10 +51,11 @@
 }
 
 .show_more_img {
-  opacity: 0.5;
-  position: relative;
   height: 100%;
   width: 100%;
+  overflow: hidden;
+  opacity: 0.5;
+  position: relative;
 }
 
 .show_more_text {
@@ -61,67 +68,90 @@
 }
 
 .img_1_1 {
-  width: 100%;
-  height: 100%;
+  grid-column: 1;
+  grid-row: 1;
 }
 
 .img_2_1 {
-  width: 49.75%;
-  height: 100%;
-  padding-right: 0.25%;
+  grid-column: 1/2;
+  grid-row: 1;
 }
 .img_2_2 {
-  width: 49.75%;
-  height: 100%;
-  padding-right: 0.25%;
+  grid-column: 2;
+  grid-row: 1;
 }
 
 .img_3_1 {
-  width: 100%;
-  height: 67%;
+  grid-column: 1 / 3;
+  grid-row: 1 / 3;
 }
 
 .img_3_2 {
-  width: 49.75%;
-  height: 33%;
-  padding-right: 0.25%;
+  grid-row: 3;
+  grid-column: 1 / 2;
 }
 .img_3_3 {
-  padding-left: 0.25%;
-  width: 49.75%;
-  height: 33%;
+  grid-row: 3;
+  grid-column: 2 / 3;
 }
 
 .img_4_1 {
-  width: 100%;
-  height: 67%;
+  grid-column: 1 / 4;
+  grid-row: 1 / 3;
 }
 
 .img_4_2 {
-  width: 33%;
-  height: 33%;
+  grid-row: 3;
+  grid-column: 1 / 2;
 }
 .img_4_3 {
-  padding: 0 0.25rem;
-  width: 33%;
-  height: 33%;
+  grid-row: 3;
+  grid-column: 2 / 3;
 }
 .img_4_4 {
-  width: 33%;
-  height: 33%;
+  grid-row: 3;
+  grid-column: 3;
+}
+
+.img_5_1 {
+  grid-column: 1 / 3;
+  grid-row: 1/3;
+}
+
+.img_5_2 {
+  grid-row: 1;
+  grid-column: 3/5;
+}
+
+.img_5_3 {
+  grid-row: 3;
+  grid-column: 1 / 2;
+}
+.img_5_4 {
+  grid-row: 3;
+  grid-column: 2/3;
+}
+.img_5_5 {
+  grid-row: 3;
+  grid-column: 3/5;
+}
+
+/* sub-grid-second-row */
+
+.sub_grid_wrapper_3_img {
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .sub_img_3_1 {
-  width: 33%;
-  height: 100%;
+  grid-column: 1 / 2;
+  grid-row: 2;
 }
 
 .sub_img_3_2 {
-  width: 33.5%;
-  height: 100%;
-  padding: 0 0.25%;
+  grid-column: 2 / 3;
+  grid-row: 2;
 }
 .sub_img_3_3 {
-  width: 33%;
-  height: 100%;
+  grid-column: 3;
+  grid-row: 2;
 }
