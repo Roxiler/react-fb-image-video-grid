@@ -1,0 +1,157 @@
+.sub_grid_wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.sub_grid_wrapper_first_row {
+  display: grid;
+  grid-auto-flow: row;
+  width: 100%;
+  height: 66.66%;
+  gap: 0.25rem;
+}
+.sub_grid_wrapper_second_row {
+  display: grid;
+  grid-auto-flow: row;
+  width: 100%;
+  height: 33.33%;
+  gap: 0.25rem;
+}
+
+.grid_wrapper {
+  display: grid;
+  grid-auto-flow: row;
+  width: 100%;
+  height: 100%;
+  gap: 0.25rem;
+}
+
+.grid_wrapper_1_img {
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.grid_wrapper_2_img {
+  grid-template-columns: repeat(2, 1fr);
+}
+.grid_wrapper_3_img {
+  grid-template-columns: repeat(2, 1fr);
+}
+.grid_wrapper_4_img {
+  grid-template-columns: repeat(3, 1fr);
+}
+.grid_wrapper_5_img {
+  grid-template-columns: repeat(2, 1fr 1fr);
+}
+
+.img {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.show_more_img {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  opacity: 0.5;
+  position: relative;
+}
+
+.show_more_text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  color: white;
+}
+
+.img_1_1 {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.img_2_1 {
+  grid-column: 1/2;
+  grid-row: 1;
+}
+.img_2_2 {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.img_3_1 {
+  grid-column: 1 / 3;
+  grid-row: 1 / 3;
+}
+
+.img_3_2 {
+  grid-row: 3;
+  grid-column: 1 / 2;
+}
+.img_3_3 {
+  grid-row: 3;
+  grid-column: 2 / 3;
+}
+
+.img_4_1 {
+  grid-column: 1 / 4;
+  grid-row: 1 / 3;
+}
+
+.img_4_2 {
+  grid-row: 3;
+  grid-column: 1 / 2;
+}
+.img_4_3 {
+  grid-row: 3;
+  grid-column: 2 / 3;
+}
+.img_4_4 {
+  grid-row: 3;
+  grid-column: 3;
+}
+
+.img_5_1 {
+  grid-column: 1 / 3;
+  grid-row: 1/3;
+}
+
+.img_5_2 {
+  grid-row: 1;
+  grid-column: 3/5;
+}
+
+.img_5_3 {
+  grid-row: 3;
+  grid-column: 1 / 2;
+}
+.img_5_4 {
+  grid-row: 3;
+  grid-column: 2/3;
+}
+.img_5_5 {
+  grid-row: 3;
+  grid-column: 3/5;
+}
+
+/* sub-grid-second-row */
+
+.sub_grid_wrapper_3_img {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.sub_img_3_1 {
+  grid-column: 1 / 2;
+  grid-row: 2;
+}
+
+.sub_img_3_2 {
+  grid-column: 2 / 3;
+  grid-row: 2;
+}
+.sub_img_3_3 {
+  grid-column: 3;
+  grid-row: 2;
+}
