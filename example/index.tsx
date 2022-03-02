@@ -173,7 +173,7 @@ function App() {
         </div>
       </div>
 
-      <div style={{ marginBottom: '2rem' }}>
+      {/* <div style={{ marginBottom: '2rem' }}>
         <h1>1 video</h1>
         <div style={{ width: '60vw', height: '30rem' }}>
           <ImageGrid>
@@ -392,7 +392,7 @@ function App() {
             </video>
           </ImageGrid>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -18,6 +18,10 @@ Image-video library which displays them in beautiful grids.
 
 https://codesandbox.io/s/react-fb-image-video-grid-ix5tzb
 
+# Code example
+
+https://github.com/Roxiler/react-fb-image-video-grid/blob/main/example/index.tsx
+
 ## Checkout below gif.
 
 ![](https://media.giphy.com/media/o0vQSM2HbuWRa7e0CK/giphy.gif)
@@ -25,6 +29,7 @@ https://codesandbox.io/s/react-fb-image-video-grid-ix5tzb
 # Basic Usage
 
 - For image grid of 1 image with modal
+
   ```
   import {ImageGrid} from "react-fb-image-video-grid"
 
@@ -35,7 +40,9 @@ https://codesandbox.io/s/react-fb-image-video-grid-ix5tzb
            />
    </ImageGrid>
   ```
+
 - For image grid of 5 images with modal
+
   ```
   import {ImageGrid} from "react-fb-image-video-grid"
 
@@ -62,7 +69,9 @@ https://codesandbox.io/s/react-fb-image-video-grid-ix5tzb
            />
    </ImageGrid>
   ```
+
 - For image grid of 1 image without modal
+
   ```
   import {ImageGrid} from "react-fb-image-video-grid"
 
@@ -73,7 +82,9 @@ https://codesandbox.io/s/react-fb-image-video-grid-ix5tzb
            />
    </ImageGrid>
   ```
+
 - For image grid of 5 images without modal
+
   ```
   import {ImageGrid} from "react-fb-image-video-grid"
 
