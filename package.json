@@ -1,5 +1,5 @@
 {
-  "version": "0.1.4",
+  "version": "0.1.5",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -23,6 +23,10 @@
   },
   "peerDependencies": {
     "react": ">=16"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Roxiler/react-fb-image-video-grid"
   },
   "husky": {
     "hooks": {
