@@ -1,5 +1,5 @@
 {
-  "version": "0.1.5",
+  "version": "0.1.6",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -77,5 +77,36 @@
   },
   "dependencies": {
     "react-modal": "^3.14.4"
-  }
+  },
+  "keywords": [
+    "react",
+    "react-component",
+    "grid",
+    "image",
+    " images",
+    " video",
+    " videos",
+    " photo",
+    " photos",
+    " lightbox",
+    " gallery",
+    " js",
+    " jsx",
+    " javascript",
+    " tags",
+    " react-image-grid",
+    " react-component-gallery",
+    "  react-grid",
+    "  react-gallery",
+    "  react-video-grid",
+    "  react-image-video-grid",
+    "  react-fb-image-video-grid",
+    "  fb",
+    "  facebook",
+    "  google",
+    "  google-photos",
+    "  meta",
+    "  flex",
+    "  flexbox"
+  ]
 }

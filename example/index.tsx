@@ -1,7 +1,7 @@
 // import 'react-app-polyfill/ie11';
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import { ImageGrid } from '../src/Library';
+import { render } from 'react-dom';
+import { ImageGrid, VideoGrid } from '../src/Library';
 
 function App() {
   return (
@@ -173,43 +173,43 @@ function App() {
         </div>
       </div>
 
-      {/* <div style={{ marginBottom: '2rem' }}>
+      <div style={{ marginBottom: '2rem' }}>
         <h1>1 video</h1>
         <div style={{ width: '60vw', height: '30rem' }}>
-          <ImageGrid>
+          <VideoGrid>
             <video controls>
               <source
                 type="video/mp4"
                 src="https://endtest-videos.s3-us-west-2.amazonaws.com/documentation/endtest_data_driven_testing_csv.mp4"
               />
             </video>
-          </ImageGrid>
+          </VideoGrid>
         </div>
       </div>
       <div style={{ marginBottom: '2rem' }}>
         <h1>2 videos</h1>
         <div style={{ width: '60vw', height: '30rem' }}>
-          <ImageGrid>
+          <VideoGrid>
             <video controls>
               <source
                 type="video/mp4"
                 src="https://endtest-videos.s3-us-west-2.amazonaws.com/documentation/endtest_data_driven_testing_csv.mp4"
               />
             </video>
-            <video controls preload="none">
+            <video controls>
               <source
-                src="http://media.w3.org/2010/05/sintel/trailer.mp4"
                 type="video/mp4"
+                src="https://endtest-videos.s3-us-west-2.amazonaws.com/documentation/endtest_data_driven_testing_csv.mp4"
               />
             </video>
-          </ImageGrid>
+          </VideoGrid>
         </div>
       </div>
 
       <div style={{ marginBottom: '2rem' }}>
         <h1>3 videos</h1>
         <div style={{ width: '60vw', height: '30rem' }}>
-          <ImageGrid>
+          <VideoGrid>
             <video controls preload="none">
               <source
                 src="http://media.w3.org/2010/05/sintel/trailer.mp4"
@@ -228,14 +228,14 @@ function App() {
                 type="video/mp4"
               />
             </video>
-          </ImageGrid>
+          </VideoGrid>
         </div>
       </div>
 
       <div style={{ marginBottom: '2rem' }}>
         <h1>4 videos</h1>
         <div style={{ width: '60vw', height: '30rem' }}>
-          <ImageGrid>
+          <VideoGrid>
             <video controls>
               <source
                 type="video/mp4"
@@ -260,14 +260,14 @@ function App() {
                 src="https://endtest-videos.s3-us-west-2.amazonaws.com/documentation/endtest_data_driven_testing_csv.mp4"
               />
             </video>
-          </ImageGrid>
+          </VideoGrid>
         </div>
       </div>
 
       <div style={{ marginBottom: '2rem' }}>
         <h1>5 videos</h1>
         <div style={{ width: '60vw', height: '30rem' }}>
-          <ImageGrid>
+          <VideoGrid>
             <video controls>
               <source
                 type="video/mp4"
@@ -298,13 +298,13 @@ function App() {
                 src="https://endtest-videos.s3-us-west-2.amazonaws.com/documentation/endtest_data_driven_testing_csv.mp4"
               />
             </video>
-          </ImageGrid>
+          </VideoGrid>
         </div>
       </div>
       <div style={{ marginBottom: '2rem' }}>
         <h1>6 videos</h1>
         <div style={{ width: '60vw', height: '30rem' }}>
-          <ImageGrid>
+          <VideoGrid>
             <video controls>
               <source
                 type="video/mp4"
@@ -341,13 +341,13 @@ function App() {
                 src="https://endtest-videos.s3-us-west-2.amazonaws.com/documentation/endtest_data_driven_testing_csv.mp4"
               />
             </video>
-          </ImageGrid>
+          </VideoGrid>
         </div>
       </div>
       <div style={{ marginBottom: '2rem' }}>
         <h1>7 videos</h1>
         <div style={{ width: '60vw', height: '30rem' }}>
-          <ImageGrid>
+          <VideoGrid>
             <video controls>
               <source
                 type="video/mp4"
@@ -390,11 +390,11 @@ function App() {
                 src="https://endtest-videos.s3-us-west-2.amazonaws.com/documentation/endtest_data_driven_testing_csv.mp4"
               />
             </video>
-          </ImageGrid>
+          </VideoGrid>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+render(<App />, document.getElementById('root'));

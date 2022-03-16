@@ -26,7 +26,7 @@ https://github.com/Roxiler/react-fb-image-video-grid/blob/main/example/index.tsx
 
 ![](https://media.giphy.com/media/o0vQSM2HbuWRa7e0CK/giphy.gif)
 
-# Basic Usage
+# Basic Usage of Image Grid
 
 - For image grid of 1 image with modal
 
@@ -70,7 +70,7 @@ https://github.com/Roxiler/react-fb-image-video-grid/blob/main/example/index.tsx
    </ImageGrid>
   ```
 
-- For image grid of 1 image without modal
+  - For image grid of 1 image without modal
 
   ```
   import {ImageGrid} from "react-fb-image-video-grid"
@@ -111,3 +111,83 @@ https://github.com/Roxiler/react-fb-image-video-grid/blob/main/example/index.tsx
            />
    </ImageGrid>
   ```
+
+# Basic Usage of Video Grid
+
+- For video grid of 1 video with modal
+
+  ```
+  import {VideoGrid} from "react-fb-image-video-grid"
+
+   <VideoGrid>
+           <img
+             alt="ig"
+             src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
+           />
+   </VideoGrid>
+  ```
+
+- For image grid of 2 images with modal
+
+  ```
+  import {VideoGrid} from "react-fb-image-video-grid"
+
+   <VideoGrid>
+
+            <video controls>
+              <source
+                type="video/mp4"
+                src="https://endtest-videos.s3-us-west-2.amazonaws.com/documentation/endtest_data_driven_testing_csv.mp4"
+              />
+            </video>
+            <video controls>
+              <source
+                type="video/mp4"
+                src="https://endtest-videos.s3-us-west-2.amazonaws.com/documentation/endtest_data_driven_testing_csv.mp4"
+              />
+            </video>
+
+   </VideoGrid>
+  ```
+
+  - For video grid of 1 video without modal
+
+  ```
+  import {VideoGrid} from "react-fb-image-video-grid"
+
+   <VideoGrid showModal={false}>
+           <img
+             alt="ig"
+             src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
+           />
+   </VideoGrid>
+  ```
+
+- For image grid of 2 images without modal
+
+  ```
+  import {VideoGrid} from "react-fb-image-video-grid"
+
+   <VideoGrid showModal={false}>
+
+            <video controls>
+              <source
+                type="video/mp4"
+                src="https://endtest-videos.s3-us-west-2.amazonaws.com/documentation/endtest_data_driven_testing_csv.mp4"
+              />
+            </video>
+            <video controls>
+              <source
+                type="video/mp4"
+                src="https://endtest-videos.s3-us-west-2.amazonaws.com/documentation/endtest_data_driven_testing_csv.mp4"
+              />
+            </video>
+
+   </VideoGrid>
+  ```
+
+  ## props
+
+| Accepted props |   type  | Description                                                                             |
+| -------------- |---------|-----------------------------------------------------------------------------------------|
+| showModal      | boolean |set showModal to true if you want to show the modal when user clicks on image/video       |
