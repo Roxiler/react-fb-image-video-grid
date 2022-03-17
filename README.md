@@ -16,7 +16,7 @@ Image-video library which displays them in beautiful grids.
 
 # Demo
 
-https://codesandbox.io/s/react-fb-image-video-grid-ix5tzb
+https://codesandbox.io/s/react-fb-image-video-grid-forked-p8vo2o
 
 # Code example
 
@@ -188,6 +188,6 @@ https://github.com/Roxiler/react-fb-image-video-grid/blob/main/example/index.tsx
 
   ## props
 
-| Accepted props |   type  | Description                                                                             |
-| -------------- |---------|-----------------------------------------------------------------------------------------|
-| showModal      | boolean |set showModal to true if you want to show the modal when user clicks on image/video       |
+| Accepted props | type    | Description                                                                         |
+| -------------- | ------- | ----------------------------------------------------------------------------------- |
+| showModal      | boolean | set showModal to true if you want to show the modal when user clicks on image/video |
