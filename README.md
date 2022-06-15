@@ -120,10 +120,10 @@ https://github.com/Roxiler/react-fb-image-video-grid/blob/main/example/index.tsx
   import {VideoGrid} from "react-fb-image-video-grid"
 
    <VideoGrid>
-           <img
-             alt="ig"
-             src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
-           />
+           <source
+                type="video/mp4"
+                src="https://endtest-videos.s3-us-west-2.amazonaws.com/documentation/endtest_data_driven_testing_csv.mp4"
+              />
    </VideoGrid>
   ```
 
@@ -156,10 +156,10 @@ https://github.com/Roxiler/react-fb-image-video-grid/blob/main/example/index.tsx
   import {VideoGrid} from "react-fb-image-video-grid"
 
    <VideoGrid showModal={false}>
-           <img
-             alt="ig"
-             src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
-           />
+          <source
+                type="video/mp4"
+                src="https://endtest-videos.s3-us-west-2.amazonaws.com/documentation/endtest_data_driven_testing_csv.mp4"
+              />
    </VideoGrid>
   ```
 
