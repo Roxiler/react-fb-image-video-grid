@@ -16,7 +16,7 @@ Image-video library which displays them in beautiful grids.
 
 # Demo
 
-https://codesandbox.io/s/react-fb-image-video-grid-forked-p8vo2o
+https://codesandbox.io/s/react-fb-image-video-grid-forked-qoq6tt
 
 # Code example
 
