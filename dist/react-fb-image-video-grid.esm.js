@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 
 function _extends() {
@@ -60,6 +60,8 @@ var css_248z = ".img {\n  height: 100%;\n  width: 100%;\n  overflow: hidden;\n}\
 styleInject(css_248z);
 
 var Carausel = function Carausel(_ref) {
+  var _currentImage$props;
+
   var images = _ref.images,
       initialImageIndex = _ref.initialImageIndex,
       isOpen = _ref.isOpen,
@@ -129,7 +131,7 @@ var Carausel = function Carausel(_ref) {
   }, React.createElement("path", {
     d: "M7.293 4.707 14.586 12l-7.293 7.293 1.414 1.414L17.414 12 8.707 3.293 7.293 4.707z"
   })), React.cloneElement(currentImage, {
-    className: clsx("img", currentImage.props.className || "")
+    className: clsx("img", (currentImage == null ? void 0 : (_currentImage$props = currentImage.props) == null ? void 0 : _currentImage$props.className) || "")
   }), React.createElement("svg", {
     className: clsx("icon"),
     onClick: handleNext,
@@ -145,11 +147,18 @@ var css_248z$1 = ".sub_grid_wrapper {\n  width: 100%;\n  height: 100%;\n}\n\n.su
 styleInject(css_248z$1);
 
 var ImageGrid = function ImageGrid(_ref) {
-  var children = _ref.children,
+  var elements = _ref.children,
       _ref$showModal = _ref.showModal,
       showModal = _ref$showModal === void 0 ? true : _ref$showModal,
       _ref$className = _ref.className,
-      className = _ref$className === void 0 ? '' : _ref$className;
+      className = _ref$className === void 0 ? '' : _ref$className,
+      _ref$smart = _ref.smart,
+      smart = _ref$smart === void 0 ? false : _ref$smart;
+
+  var _useState = useState(elements),
+      children = _useState[0],
+      setChildren = _useState[1];
+
   var numberOfImages = Array.isArray(children) ? children.length : 1;
 
   var _React$useState = React.useState(0),
@@ -168,10 +177,45 @@ var ImageGrid = function ImageGrid(_ref) {
   var handleCloseCarausel = function handleCloseCarausel() {
     setSelectedImageIndex(0);
     setIsOpenCarausel(false);
-  };
+  }; // const ref = useRef(new Array(numberOfImages).fill({}));
+
+
+  var _useState2 = useState([]),
+      images = _useState2[0],
+      setImages = _useState2[1];
+
+  useEffect(function () {
+    if (images.length === numberOfImages && smart) {
+      setChildren(images.filter(function (ele) {
+        return ele.element;
+      }).sort(function (a, b) {
+        return Math.abs(a.dimensions.right - a.dimensions.left) - Math.abs(b.dimensions.right - b.dimensions.left);
+      }).map(function (_ref2) {
+        var element = _ref2.element;
+        return element;
+      }));
+    }
+  }, [images]);
 
   if (numberOfImages < 5) {
-    return React.createElement(React.Fragment, null, typeof showModal === 'boolean' && showModal && React.createElement(Carausel, {
+    return React.createElement(React.Fragment, null, smart && React.Children.map(children, function (child) {
+      return React.cloneElement(child, {
+        ref: function ref(element) {
+          if (images.length >= numberOfImages) return;
+          if (!element) return;
+          setImages(function (prev) {
+            return [].concat(prev, [{
+              element: child,
+              dimensions: (element == null ? void 0 : element.getBoundingClientRect()) || {}
+            }]);
+          });
+        },
+        style: {
+          visibility: 'hidden',
+          position: 'absolute'
+        }
+      });
+    }), typeof showModal === 'boolean' && showModal && React.createElement(Carausel, {
       key: String(isOpenCarausel),
       isOpen: isOpenCarausel,
       images: numberOfImages === 1 ? [children] : children,
@@ -200,7 +244,24 @@ var ImageGrid = function ImageGrid(_ref) {
       return i >= 2 && i <= 4;
     });
     var secondRowImgCount = secondRow.length;
-    return React.createElement(React.Fragment, null, typeof showModal === 'boolean' && showModal && React.createElement(Carausel, {
+    return React.createElement(React.Fragment, null, smart && React.Children.map(children, function (child) {
+      return React.cloneElement(child, {
+        ref: function ref(element) {
+          if (images.length >= numberOfImages) return;
+          if (!element) return;
+          setImages(function (prev) {
+            return [].concat(prev, [{
+              element: child,
+              dimensions: (element == null ? void 0 : element.getBoundingClientRect()) || {}
+            }]);
+          });
+        },
+        style: {
+          visibility: 'hidden',
+          position: 'absolute'
+        }
+      });
+    }), typeof showModal === 'boolean' && showModal && React.createElement(Carausel, {
       key: String(isOpenCarausel),
       isOpen: isOpenCarausel,
       initialImageIndex: selectedImageIndex,

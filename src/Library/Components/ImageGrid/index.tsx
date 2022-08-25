@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import { clsx } from '../../Utilis/clsx';
 import Carausel from '../Carousel';
 import './styles.css';
@@ -7,9 +7,17 @@ interface Props {
   children: JSX.Element | JSX.Element[];
   className?: string;
   showModal?: boolean;
+  smart?: boolean;
 }
 
-const ImageGrid = ({ children, showModal = true, className = '' }: Props) => {
+const ImageGrid = ({
+  children: elements,
+  showModal = true,
+  className = '',
+  smart = false,
+}: Props) => {
+  const [children, setChildren] = useState(elements);
+
   const numberOfImages = Array.isArray(children) ? children.length : 1;
 
   const [selectedImageIndex, setSelectedImageIndex] = React.useState<number>(0);
@@ -24,10 +32,49 @@ const ImageGrid = ({ children, showModal = true, className = '' }: Props) => {
     setSelectedImageIndex(0);
     setIsOpenCarausel(false);
   };
+  // const ref = useRef(new Array(numberOfImages).fill({}));
+  const [images, setImages] = useState<
+    Array<{ element: JSX.Element; dimensions: DOMRect }>
+  >([]);
+
+  useEffect(() => {
+    if (images.length === numberOfImages && smart) {
+      setChildren(
+        images
+          .filter((ele) => ele.element)
+          .sort(
+            (a, b) =>
+              Math.abs(a.dimensions.right - a.dimensions.left) -
+              Math.abs(b.dimensions.right - b.dimensions.left)
+          )
+          .map(({ element }) => element as unknown as JSX.Element)
+      );
+    }
+  }, [images]);
 
   if (numberOfImages < 5) {
     return (
       <>
+        {smart &&
+          React.Children.map(children, (child) =>
+            React.cloneElement(child, {
+              ref: (element: HTMLElement) => {
+                if (images.length >= numberOfImages) return;
+                if (!element) return;
+                setImages((prev) => [
+                  ...prev,
+                  {
+                    element: child,
+                    dimensions: element?.getBoundingClientRect() || {},
+                  },
+                ]);
+              },
+              style: {
+                visibility: 'hidden',
+                position: 'absolute',
+              },
+            })
+          )}
         {typeof showModal === 'boolean' && showModal && (
           <Carausel
             key={String(isOpenCarausel)}
@@ -75,6 +122,26 @@ const ImageGrid = ({ children, showModal = true, className = '' }: Props) => {
 
     return (
       <>
+        {smart &&
+          React.Children.map(children, (child) =>
+            React.cloneElement(child, {
+              ref: (element: HTMLElement) => {
+                if (images.length >= numberOfImages) return;
+                if (!element) return;
+                setImages((prev) => [
+                  ...prev,
+                  {
+                    element: child,
+                    dimensions: element?.getBoundingClientRect() || {},
+                  },
+                ]);
+              },
+              style: {
+                visibility: 'hidden',
+                position: 'absolute',
+              },
+            })
+          )}
         {typeof showModal === 'boolean' && showModal && (
           <Carausel
             key={String(isOpenCarausel)}
