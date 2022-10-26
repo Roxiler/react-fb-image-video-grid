@@ -22775,7 +22775,6 @@ const ImageGrid = ({ children: elements , showModal =true , className ='' , smar
     };
     // const ref = useRef(new Array(numberOfImages).fill({}));
     const [images, setImages] = _react.useState([]);
-    console.log(children);
     _react.useEffect(()=>{
         if (images.length === numberOfImages && smart) setChildren(images.filter((ele)=>ele.element
         ).sort((a, b)=>Math.abs(a.dimensions.right - a.dimensions.left) - Math.abs(b.dimensions.right - b.dimensions.left)
@@ -22786,7 +22785,7 @@ const ImageGrid = ({ children: elements , showModal =true , className ='' , smar
     ]);
     if (numberOfImages < 5) return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV(_jsxDevRuntime.Fragment, {
         children: [
-            smart && _reactDefault.default.Children.map(children, (child, i)=>/*#__PURE__*/ _reactDefault.default.cloneElement(child, {
+            smart && _reactDefault.default.Children.map(children, (child)=>/*#__PURE__*/ _reactDefault.default.cloneElement(child, {
                     ref: (element)=>{
                         if (images.length >= numberOfImages) return;
                         if (!element) return;
@@ -22815,7 +22814,7 @@ const ImageGrid = ({ children: elements , showModal =true , className ='' , smar
                 onClose: handleCloseCarausel
             }, String(isOpenCarausel), false, {
                 fileName: "/Users/saichand/roxiler/src/Library/Components/ImageGrid/index.tsx",
-                lineNumber: 80,
+                lineNumber: 79,
                 columnNumber: 11
             }, undefined),
             /*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
@@ -22833,7 +22832,7 @@ const ImageGrid = ({ children: elements , showModal =true , className ='' , smar
                 })
             }, void 0, false, {
                 fileName: "/Users/saichand/roxiler/src/Library/Components/ImageGrid/index.tsx",
-                lineNumber: 93,
+                lineNumber: 92,
                 columnNumber: 9
             }, undefined)
         ]
@@ -22847,7 +22846,7 @@ const ImageGrid = ({ children: elements , showModal =true , className ='' , smar
         const secondRowImgCount = secondRow.length;
         return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV(_jsxDevRuntime.Fragment, {
             children: [
-                smart && _reactDefault.default.Children.map(children, (child, i)=>/*#__PURE__*/ _reactDefault.default.cloneElement(child, {
+                smart && _reactDefault.default.Children.map(children, (child)=>/*#__PURE__*/ _reactDefault.default.cloneElement(child, {
                         ref: (element)=>{
                             if (images.length >= numberOfImages) return;
                             if (!element) return;
@@ -22876,7 +22875,7 @@ const ImageGrid = ({ children: elements , showModal =true , className ='' , smar
                     onClose: handleCloseCarausel
                 }, String(isOpenCarausel), false, {
                     fileName: "/Users/saichand/roxiler/src/Library/Components/ImageGrid/index.tsx",
-                    lineNumber: 147,
+                    lineNumber: 146,
                     columnNumber: 11
                 }, undefined),
                 /*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
@@ -22897,7 +22896,7 @@ const ImageGrid = ({ children: elements , showModal =true , className ='' , smar
                             })
                         }, void 0, false, {
                             fileName: "/Users/saichand/roxiler/src/Library/Components/ImageGrid/index.tsx",
-                            lineNumber: 161,
+                            lineNumber: 160,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
@@ -22927,13 +22926,13 @@ const ImageGrid = ({ children: elements , showModal =true , className ='' , smar
                                             ]
                                         }, void 0, true, {
                                             fileName: "/Users/saichand/roxiler/src/Library/Components/ImageGrid/index.tsx",
-                                            lineNumber: 211,
+                                            lineNumber: 210,
                                             columnNumber: 21
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "/Users/saichand/roxiler/src/Library/Components/ImageGrid/index.tsx",
-                                    lineNumber: 192,
+                                    lineNumber: 191,
                                     columnNumber: 19
                                 }, undefined));
                                 return(/*#__PURE__*/ _reactDefault.default.cloneElement(child, {
@@ -22947,13 +22946,13 @@ const ImageGrid = ({ children: elements , showModal =true , className ='' , smar
                             })
                         }, void 0, false, {
                             fileName: "/Users/saichand/roxiler/src/Library/Components/ImageGrid/index.tsx",
-                            lineNumber: 181,
+                            lineNumber: 180,
                             columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "/Users/saichand/roxiler/src/Library/Components/ImageGrid/index.tsx",
-                    lineNumber: 160,
+                    lineNumber: 159,
                     columnNumber: 9
                 }, undefined)
             ]
@@ -23826,6 +23825,7 @@ var _s = $RefreshSig$();
 const Carausel = ({ images , initialImageIndex , isOpen , onClose  })=>{
     _s();
     const [currentImageIndex, setCurrentImageIndex] = _reactDefault.default.useState(initialImageIndex);
+    const [direction, setDirection] = _react.useState('');
     const memoizedImages = _reactDefault.default.useMemo(()=>images
     , [
         images
@@ -23833,23 +23833,26 @@ const Carausel = ({ images , initialImageIndex , isOpen , onClose  })=>{
     const handleNext = _reactDefault.default.useCallback(()=>{
         setCurrentImageIndex((prevImageIndex)=>prevImageIndex === memoizedImages.length - 1 ? 0 : prevImageIndex + 1
         );
+        setDirection('right');
     }, [
         memoizedImages
     ]);
-    const handlePrevious = _reactDefault.default.useCallback(()=>setCurrentImageIndex((prevImgIndex)=>prevImgIndex === 0 ? memoizedImages.length - 1 : prevImgIndex - 1
-        )
-    , [
+    const handlePrevious = _reactDefault.default.useCallback(()=>{
+        setDirection('left');
+        setCurrentImageIndex((prevImgIndex)=>prevImgIndex === 0 ? memoizedImages.length - 1 : prevImgIndex - 1
+        );
+    }, [
         memoizedImages
     ]);
     _reactDefault.default.useEffect(()=>{
-        document.addEventListener("keydown", (key)=>{
-            if (key.key === "ArrowRight") handleNext();
-            else if (key.key === "ArrowLeft") handlePrevious();
+        document.addEventListener('keydown', (key)=>{
+            if (key.key === 'ArrowRight') handleNext();
+            else if (key.key === 'ArrowLeft') handlePrevious();
         });
         return ()=>{
-            document.removeEventListener("keydown", (key)=>{
-                if (key.key === "ArrowRight") handleNext();
-                else if (key.key === "ArrowLeft") handlePrevious();
+            document.removeEventListener('keydown', (key)=>{
+                if (key.key === 'ArrowRight') handleNext();
+                else if (key.key === 'ArrowLeft') handlePrevious();
             });
         };
     }, [
@@ -23857,17 +23860,38 @@ const Carausel = ({ images , initialImageIndex , isOpen , onClose  })=>{
         handlePrevious
     ]);
     const currentImage = images[currentImageIndex];
+    const imageRef = _react.useRef();
+    const firstRender = _react.useRef(false);
+    _react.useEffect(()=>{
+        if (!firstRender.current) {
+            firstRender.current = true;
+            return;
+        }
+        if (direction) {
+            imageRef.current?.classList.add(`hide_img_${direction}`);
+            setTimeout(()=>{
+                imageRef.current?.classList.add('apply_transition');
+                imageRef.current?.classList.remove(`hide_img_${direction}`);
+                setTimeout(()=>{
+                    imageRef.current?.classList.remove('apply_transition');
+                }, 1000);
+            }, 50);
+        }
+    }, [
+        currentImage,
+        direction
+    ]);
     return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactModalDefault.default, {
         ariaHideApp: false,
         isOpen: isOpen,
         onRequestClose: onClose,
         contentLabel: "Example Modal",
         children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
-            className: "layout",
+            className: 'layout',
             children: [
                 /*#__PURE__*/ _jsxDevRuntime.jsxDEV("svg", {
                     onClick: onClose,
-                    className: _clsx.clsx("close_icon", "icon"),
+                    className: _clsx.clsx('close_icon', 'icon'),
                     fill: "#000000",
                     xmlns: "http://www.w3.org/2000/svg",
                     viewBox: "0 0 24 24",
@@ -23877,19 +23901,19 @@ const Carausel = ({ images , initialImageIndex , isOpen , onClose  })=>{
                         d: "M 4.7070312 3.2929688 L 3.2929688 4.7070312 L 10.585938 12 L 3.2929688 19.292969 L 4.7070312 20.707031 L 12 13.414062 L 19.292969 20.707031 L 20.707031 19.292969 L 13.414062 12 L 20.707031 4.7070312 L 19.292969 3.2929688 L 12 10.585938 L 4.7070312 3.2929688 z"
                     }, void 0, false, {
                         fileName: "/Users/saichand/roxiler/src/Library/Components/Carousel/index.tsx",
-                        lineNumber: 77,
+                        lineNumber: 100,
                         columnNumber: 11
                     }, undefined)
                 }, void 0, false, {
                     fileName: "/Users/saichand/roxiler/src/Library/Components/Carousel/index.tsx",
-                    lineNumber: 68,
+                    lineNumber: 91,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
-                    className: "modal_wrap",
+                    className: 'modal_wrap',
                     children: [
                         /*#__PURE__*/ _jsxDevRuntime.jsxDEV("svg", {
-                            className: _clsx.clsx("icon", "left_arrow"),
+                            className: _clsx.clsx('icon', 'left_arrow'),
                             onClick: handlePrevious,
                             xmlns: "http://www.w3.org/2000/svg",
                             width: "24",
@@ -23898,19 +23922,20 @@ const Carausel = ({ images , initialImageIndex , isOpen , onClose  })=>{
                                 d: "M7.293 4.707 14.586 12l-7.293 7.293 1.414 1.414L17.414 12 8.707 3.293 7.293 4.707z"
                             }, void 0, false, {
                                 fileName: "/Users/saichand/roxiler/src/Library/Components/Carousel/index.tsx",
-                                lineNumber: 87,
+                                lineNumber: 110,
                                 columnNumber: 13
                             }, undefined)
                         }, void 0, false, {
                             fileName: "/Users/saichand/roxiler/src/Library/Components/Carousel/index.tsx",
-                            lineNumber: 80,
+                            lineNumber: 103,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ _reactDefault.default.cloneElement(currentImage, {
-                            className: _clsx.clsx("img", currentImage?.props?.className || "")
+                            className: _clsx.clsx('img', currentImage?.props?.className || ''),
+                            ref: imageRef
                         }),
                         /*#__PURE__*/ _jsxDevRuntime.jsxDEV("svg", {
-                            className: _clsx.clsx("icon"),
+                            className: _clsx.clsx('icon'),
                             onClick: handleNext,
                             xmlns: "http://www.w3.org/2000/svg",
                             width: "24",
@@ -23919,33 +23944,33 @@ const Carausel = ({ images , initialImageIndex , isOpen , onClose  })=>{
                                 d: "M7.293 4.707 14.586 12l-7.293 7.293 1.414 1.414L17.414 12 8.707 3.293 7.293 4.707z"
                             }, void 0, false, {
                                 fileName: "/Users/saichand/roxiler/src/Library/Components/Carousel/index.tsx",
-                                lineNumber: 100,
+                                lineNumber: 124,
                                 columnNumber: 13
                             }, undefined)
                         }, void 0, false, {
                             fileName: "/Users/saichand/roxiler/src/Library/Components/Carousel/index.tsx",
-                            lineNumber: 93,
+                            lineNumber: 117,
                             columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "/Users/saichand/roxiler/src/Library/Components/Carousel/index.tsx",
-                    lineNumber: 79,
+                    lineNumber: 102,
                     columnNumber: 9
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "/Users/saichand/roxiler/src/Library/Components/Carousel/index.tsx",
-            lineNumber: 67,
+            lineNumber: 90,
             columnNumber: 7
         }, undefined)
     }, void 0, false, {
         fileName: "/Users/saichand/roxiler/src/Library/Components/Carousel/index.tsx",
-        lineNumber: 61,
+        lineNumber: 84,
         columnNumber: 5
     }, undefined));
 };
-_s(Carausel, "nl8RieSBrVk9AmJx8bGNe6AoG6U=");
+_s(Carausel, "6pDoydMkYFkQvF8SvMr6HaLsGbY=");
 _c = Carausel;
 exports.default = Carausel;
 var _c;
